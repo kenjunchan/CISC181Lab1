@@ -19,27 +19,28 @@ public class Round {
 		{
 			this.eGameResult = eGameResult.NATURAL;
 		}
-		if (this.checkIsEquals(ComeOutScore, craps))
+		else if (this.checkIsEquals(ComeOutScore, craps))
 		{
 			this.eGameResult = eGameResult.CRAPS;
 		}
 		// TODO: Create a loop that will execute a roll until point is made, or
 		// seven-out
-		Roll r;
-		boolean isSevenOutOrPoint = false;
-		// int[] points = {4,5,6,8,9,10};
-		while (isSevenOutOrPoint == false && !(this.checkIsEquals(ComeOutScore, nats)) && !(this.checkIsEquals(ComeOutScore, craps)))
-		{
-			r = new Roll();
-			rolls.add(r);
-			if (r.getScore() == 7)
+		else {
+			Roll r;
+			boolean isSevenOutOrPoint = false;
+			while (isSevenOutOrPoint == false && !(this.checkIsEquals(ComeOutScore, nats)) && !(this.checkIsEquals(ComeOutScore, craps)))
 			{
-				this.eGameResult = eGameResult.SEVEN_OUT;
-				isSevenOutOrPoint = true;
-			}
-			if (r.getScore() == ComeOutScore)
-			{
-				this.eGameResult = eGameResult.POINT;
+				r = new Roll();
+				rolls.add(r);
+				if (r.getScore() == 7)
+				{
+					this.eGameResult = eGameResult.SEVEN_OUT;
+					isSevenOutOrPoint = true;
+				}
+				if (r.getScore() == ComeOutScore)
+				{
+					this.eGameResult = eGameResult.POINT;
+				}
 			}
 		}
 		// TODO: value the eGameResult after the round is complete
@@ -57,9 +58,21 @@ public class Round {
 		}
 		return b;
 	}
+	public int getFirstScore()
+	{
+		return rolls.getFirst().getScore();
+	}
+	public int getLastScore()
+	{
+		return rolls.getLast().getScore();
+	}
 	public int RollCount() {
 		// Return the roll count
 		return rolls.size();
+	}
+	public eGameResult geteGameResult()
+	{
+		return this.eGameResult;
 	}
 
 }
