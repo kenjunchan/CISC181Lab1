@@ -28,7 +28,7 @@ public class Round {
 		else {
 			Roll r;
 			boolean isSevenOutOrPoint = false;
-			while (isSevenOutOrPoint == false && !(this.checkIsEquals(ComeOutScore, nats)) && !(this.checkIsEquals(ComeOutScore, craps)))
+			while (isSevenOutOrPoint == false)
 			{
 				r = new Roll();
 				rolls.add(r);
